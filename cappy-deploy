@@ -1,0 +1,21 @@
+#!/bin/bash
+#DEPLOY CONFIG 
+DEPLOY_PROJECT="/home/git/deploy/app_deployment"
+echo "===== START POST-RECEIVE DEPLOY HOOK"
+read oldrev newrev refname
+if [ $refname = "refs/heads/master" ]; then
+  echo "===== RUNNING cap production deploy======"
+  unset GIT_DIR
+  cd $DEPLOY_PROJECT
+  cap production deploy
+  echo "===== DONE ====="
+fi
+
+# Changes to develop publish to staging
+if [ $refname = "refs/heads/develop" ]; then
+  echo "===== RUNNING cap staging deploy======"
+  unset GIT_DIR
+  cd $DEPLOY_PROJECT
+  cap staging deploy
+  echo "===== DONE ====="
+fi

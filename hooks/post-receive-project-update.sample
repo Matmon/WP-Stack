@@ -1,0 +1,11 @@
+#!/bin/bash
+FILE=`mktemp`
+cat - > $FILE
+
+echo "===== GIT COMMIT NOTIFIER ====="
+cat $FILE | git-commit-notifier /home/git/deploy/app_deployment/git-notifier-config.yml
+
+echo "===== CAPPY DEPLOY ====="
+cat $FILE | /home/git/deploy/app_deployment/cappy-deploy
+
+rm $FILE

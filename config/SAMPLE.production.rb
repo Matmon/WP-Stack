@@ -2,14 +2,15 @@
 # Customize it and rename it as production.rb
 
 # Where should the site deploy to?
-set :deploy_to, "/srv/www/example.com"
+set :deploy_to, "/home/app_user/app"
+set :branch, "master"
 
 # Now configure the servers for this environment
 
 # OPTION 1
 
 # role :web, "your web server IP address or hostname here"
-# role :web, "second web server here"
+# role :web, "localhost"
 # role :web, "third web server here, etc"
 
 # role :memcached, "your memcached server IP address or hostname here"

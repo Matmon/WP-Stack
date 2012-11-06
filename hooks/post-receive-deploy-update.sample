@@ -1,0 +1,12 @@
+#!/bin/bash
+#CONFIG 
+LIVE="/home/git/deploy/app_deployment"
+echo "===== START POST-RECEIVE HOOK"
+read oldrev newrev refname
+if [ $refname = "refs/heads/master" ]; then
+  echo "===== UPDATING DEPLOYMENT PROJECT ======"
+  unset GIT_DIR
+  cd $LIVE
+  git pull origin master
+  echo "===== DONE ====="
+fi

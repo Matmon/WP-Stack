@@ -1,15 +1,17 @@
 # This file is only loaded for the staging environment
 # Customize it and rename it as staging.rb
 
+unset :user
+set :user, "app_staging"
 # Where should the site deploy to?
-set :deploy_to, "/srv/www/example.com"
-
+set :deploy_to, "/home/app_staging/app"
+set :branch, "develop"
 # Now configure the servers for this environment
 
 # OPTION 1
 
 # role :web, "your web server IP address or hostname here"
-# role :web, "second web server here"
+# role :web, "localhost"
 # role :web, "third web server here, etc"
 
 # role :memcached, "your memcached server IP address or hostname here"
